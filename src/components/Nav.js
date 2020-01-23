@@ -5,6 +5,7 @@ import Productos from "./Productos";
 import ServicioTecnico from "./ServicioTecnico";
 import Contacto from "./Contacto";
 import Login from "./Login";
+import AgregarProductos from "./AgregarProductos";
 
 
 
@@ -69,6 +70,9 @@ class Nav extends Component {
             </Route>
             <Route path="/Contacto">
               <Contacto />
+            </Route>
+            <Route path="/AgregarProductos">
+              <AgregarProductos />
             </Route>
           </Switch>
         </Router>
