@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 class ServicioTecnico extends Component {
     render() {
         return (
-            <div className="container">Servicio Tecnico</div>
+            <div className="container mb-5">Servicio Tecnico</div>
         );
     }
 }

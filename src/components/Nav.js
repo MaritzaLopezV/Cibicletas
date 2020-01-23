@@ -48,12 +48,12 @@ class Nav extends Component {
                       Contacto
                     </Link>
                   </li>
-                  <li className="nav-item">
+                </ul>
+                <div class="nav-item">
                     <Link className="nav-link" to="/Ingresar">
                       Ingresar
                     </Link>
-                  </li>
-                </ul>
+                </div>
               </div>
             </div>
           </nav>
