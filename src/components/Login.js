@@ -2,16 +2,14 @@ import React, { Component } from "react";
 import firebase from "firebase";
 
 class Login extends Component {
-
-    constructor() {
+  constructor() {
     super();
     this.state = {
       user: null
     };
     this.handleAuth = this.handleAuth.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
-
-}
+  }
 
   handleAuth() {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -41,27 +39,49 @@ class Login extends Component {
     if (this.state.user) {
       return (
         <div className="btn-group" role="group">
-          <img 
-            src={this.state.user.photoURL} 
+          <img
+            src={this.state.user.photoURL}
             style={{ height: "2.5em" }}
-            alt={this.state.user.displayName} 
-            className="rounded-left" />
+            alt={this.state.user.displayName}
+            className="rounded-left"
+          />
           <div className="btn-group" role="group">
             <button
               id="btnGroupDrop1"
               type="button"
               className="btn btn-light"
-              to={'#'}
+              to={"#"}
             >
               {this.state.user.displayName}
             </button>
           </div>
           <div className="btn-group" role="group">
-    <button id="btnGroupDrop4" type="button" className="btn btn-light bg-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-    <div className="dropdown-menu bg-light" aria-labelledby="btnGroupDrop4">
-      <button className="dropdown-item bg-light" onClick={this.handleLogOut}>Salir</button>
-    </div>
-  </div>
+            <button
+              id="btnGroupDrop4"
+              type="button"
+              className="btn btn-light bg-light dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            ></button>
+            <div
+              className="dropdown-menu bg-light"
+              aria-labelledby="btnGroupDrop4"
+            >
+              <a
+                className="dropdown-item bg-light"
+                href={'/AgregarProductos'}
+              >
+                Agregar Productos
+              </a>
+              <button
+                className="dropdown-item bg-light"
+                onClick={this.handleLogOut}
+              >
+                Salir
+              </button>
+            </div>
+          </div>
         </div>
       );
     } else {
