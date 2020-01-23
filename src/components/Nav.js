@@ -4,6 +4,10 @@ import Home from "./Home";
 import Productos from "./Productos";
 import ServicioTecnico from "./ServicioTecnico";
 import Contacto from "./Contacto";
+import Login from "./Login";
+
+
+
 class Nav extends Component {
   render() {
     return (
@@ -11,7 +15,7 @@ class Nav extends Component {
         <Router>
           <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container">
-              <Link className="navbar-brand" to="/">
+              <Link className="navbar-brand" to={"/"}>
                 Cibicletas
               </Link>
               <button
@@ -29,31 +33,27 @@ class Nav extends Component {
               <div className="collapse navbar-collapse" id="navbarColor01">
                 <ul className="navbar-nav mr-auto">
                   <li className="nav-item">
-                    <Link className="nav-link" to="/">
+                    <Link className="nav-link" to={"/"}>
                       Inicio
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/Productos">
+                    <Link className="nav-link" to={"/Productos"}>
                       Productos
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/ServicioTecnico">
+                    <Link className="nav-link" to={"/ServicioTecnico"}>
                       Servicio Tecnico
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/Contacto">
+                    <Link className="nav-link" to={"/Contacto"}>
                       Contacto
                     </Link>
                   </li>
                 </ul>
-                <div class="nav-item">
-                    <Link className="nav-link" to="/Ingresar">
-                      Ingresar
-                    </Link>
-                </div>
+                <Login/>
               </div>
             </div>
           </nav>

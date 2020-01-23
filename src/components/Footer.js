@@ -3,9 +3,9 @@ class Footer extends Component {
   render() {
     return (
       <footer
-        class="py-4 bg-primary text-white fixed-bottom"
+        className="py-4 bg-primary text-white fixed-bottom"
       >
-        <div class="container text-center">
+        <div className="container text-center">
           <small>Copyright &copy; Cibicletas</small>
           
         </div>
