@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import Productos from "./Productos";
 import ServicioTecnico from "./ServicioTecnico";
-import Contacto from "./Contacto";
+import Bodega from "./Bodega";
 import Login from "./Login";
 import AgregarProductos from "./AgregarProductos";
 
@@ -49,8 +49,8 @@ class Nav extends Component {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to={"/Contacto"}>
-                      Contacto
+                    <Link className="nav-link" to={"/Bodega"}>
+                      Bodega
                     </Link>
                   </li>
                 </ul>
@@ -68,8 +68,8 @@ class Nav extends Component {
             <Route path="/ServicioTecnico">
               <ServicioTecnico />
             </Route>
-            <Route path="/Contacto">
-              <Contacto />
+            <Route path="/Bodega">
+              <Bodega />
             </Route>
             <Route path="/AgregarProductos">
               <AgregarProductos />

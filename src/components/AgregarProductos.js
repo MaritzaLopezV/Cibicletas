@@ -1,54 +1,93 @@
 import React, { Component } from "react";
+import firebase from 'firebase';
+import "firebase/firestore";
+
 class AgregarProductos extends Component {
+  
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      category: "",
+      stock: 0
+    };
+  }
+  
+  updateInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+  
+  addProduct = e => {
+    e.preventDefault();
+
+    e.preventDefault();
+  const db = firebase.firestore();
+  db.settings({
+    timestampsInSnapshots: true
+  });
+  const prodRef = db.collection('Productos').add({
+    name: this.state.name,
+    category: this.state.category,
+    stock: this.state.stock
+  });
+
+    this.setState({
+      name: '',
+      category: '',
+      stock: ''
+    });
+  };
+
   render() {
     return (
-      <div className="container mb-5">
+      <div className="container">
         <h1>Agregar Productos</h1>
         <hr />
-        <form>
+        <form onSubmit={this.addProduct}>
           <fieldset>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Nombre producto</label>
+            <div className="form-group">
+              <label>Nombre producto</label>
               <input
+                name="name"
                 type="text"
-                class="form-control"
-                id="exampleInputEmail1"
+                className="form-control col-4"
                 aria-describedby="emailHelp"
                 placeholder=""
+                onChange={this.updateInput}
+                value={this.state.name}
               />
-              <small id="emailHelp" class="form-text text-muted">
+              <small className="form-text text-muted">
                 Este nombre se mostrara en el catalogo
               </small>
             </div>
-            <div class="form-group">
-              <label for="exampleSelect1">Categorias</label>
-              <select class="form-control" id="exampleSelect1">
-                <option>#</option>
+            <div className="form-group">
+              <label>Categorias</label>
+              <select 
+                name="category" 
+                className="form-control col-4"
+                onChange={this.updateInput}
+                value={this.state.category}>
+                <option defaultValue>-----</option>
+                <option value="Accesorio">Accesorio</option>
+                <option value="Componente">Componente</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="exampleTextarea">Descripcion</label>
-              <textarea
-                class="form-control"
-                id="exampleTextarea"
-                rows="3"
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputFile">Imagen</label>
+            <div className="form-group">
+              <label>Stock</label>
               <input
-                type="file"
-                class="form-control-file"
-                id="exampleInputFile"
-                aria-describedby="fileHelp"
+                type="text"
+                name="stock"
+                className="form-control col-4"
+                aria-describedby="emailHelp"
+                placeholder=""
+                onChange={this.updateInput}
+                value={this.state.stock}
               />
-              <small id="fileHelp" class="form-text text-muted">
-                Solo 1 imagen por producto
-              </small>
             </div>
-            
-            <button type="submit" class="btn btn-primary mb-5">
-              Agregar
+            <button type="submit" className="btn btn-primary">
+              Agregar producto
             </button>
           </fieldset>
         </form>
