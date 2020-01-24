@@ -26,6 +26,7 @@ class Productos extends Component {
     return (
       <div className="container mb-5">
         <h1>Productos</h1>
+        <hr></hr>
         <table className="table table-hover mb-5">
           <thead>
             <tr className="table-active">
@@ -51,7 +52,9 @@ class Productos extends Component {
               })}
           </tbody>
         </table>
-        <div></div>
+        <div>
+            <hr></hr>
+        </div>
       </div>
     );
   }

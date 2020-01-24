@@ -3,7 +3,7 @@ class Home extends Component {
     render() {
         return (
             <div className="container mb-5">
-                Home
+                <h1>Home</h1><hr></hr>
             </div>
         );
     }

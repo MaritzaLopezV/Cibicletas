@@ -8,7 +8,9 @@ class Main extends Component {
     return (
       <Fragment>
         <Nav/>
-        <Footer/>
+        {
+        //<Footer/>
+        }
       </Fragment>
     );
   }
