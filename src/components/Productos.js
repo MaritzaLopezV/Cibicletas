@@ -1,27 +1,34 @@
 import React, { Component } from "react";
-import firebase from "firebase";
-import { db, auth } from "./services/FirebaseConfig";
+import { db } from "./services/FirebaseConfig";
 class Productos extends Component {
-  state = {
-    productos: null
-  };
+ 
 
-  componentDidMount() {
-    console.log("mounted");
-    db.collection("Productos")
-      .get()
-      .then(snapshot => {
-        const productos = [];
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          productos.push(data);
-        });
-        this.setState({ productos: productos });
-        console.log(snapshot);
-      })
-      .catch(error => console.log(error));
-  }
+    state = {
+      productos: null
+    }
 
+    componentDidMount() {
+      db.collection("Productos").get().then((snapshot)=>{
+        this.setState({
+          productos:snapshot.docs.map(doc=>{
+            return{
+              id:doc.id,
+              data:doc.data()
+            }
+          })
+        })  
+      },error=>{
+        console.log(error)
+      });
+    }
+
+    deleteProduct = (id) =>{
+      db.collection("Productos").doc(id).delete();  
+    }
+
+    pedirProducto = (id) => {
+      db.collection("Pedidos").add({id});
+    }
   render() {
     return (
       <div className="container mb-5">
@@ -41,19 +48,30 @@ class Productos extends Component {
               this.state.productos.map(productos => {
                 return (
                   <tr>
-                    <th scope="row">{productos.name}</th>
+                    <th scope="row" key={productos.id}>{productos.name}</th>
                     <td>{productos.category}</td>
                     <td>{productos.stock}</td>
                     <td>
-                        <button className="btn btn-primary">Pedir</button>
-                        </td>
+                      <div
+                        className="btn-group"
+                        role="group"
+                        aria-label="Basic example"
+                      >
+                        <button type="button" onClick={this.pedirProducto(productos.id)} className="rounded-left btn btn-primary">
+                          Pedir
+                        </button>
+                        <button type="button" onClick={()=>this.deleteProduct(productos.id)} className="rounded-right btn btn-danger">
+                          Eliminar
+                        </button>
+                      </div>
+                    </td>
                   </tr>
                 );
               })}
           </tbody>
         </table>
         <div>
-            <hr></hr>
+          <hr></hr>
         </div>
       </div>
     );

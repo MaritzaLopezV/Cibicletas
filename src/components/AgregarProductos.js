@@ -1,44 +1,42 @@
 import React, { Component } from "react";
 import firebase from 'firebase';
-import "firebase/firestore";
 
 class AgregarProductos extends Component {
   
   constructor() {
     super();
     this.state = {
+      id:"",
       name: "",
       category: "",
       stock: 0
     };
   }
   
-  updateInput = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
+  updateInput = e => this.setState({[e.target.name]: e.target.value});
   
+
   addProduct = e => {
-    e.preventDefault();
 
     e.preventDefault();
-  const db = firebase.firestore();
-  db.settings({
-    timestampsInSnapshots: true
-  });
-  const prodRef = db.collection('Productos').add({
-    name: this.state.name,
-    category: this.state.category,
-    stock: this.state.stock
-  });
+
+    const db = firebase.firestore();
+
+    db.collection("Productos").add({
+      name: this.state.name,
+      category: this.state.category,
+      stock: this.state.stock
+    });
 
     this.setState({
       name: '',
       category: '',
       stock: ''
     });
+    
   };
+
+  
 
   render() {
     return (
