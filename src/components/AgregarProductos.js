@@ -6,28 +6,23 @@ class AgregarProductos extends Component {
   constructor() {
     super();
     this.state = {
-      id:"",
       name: "",
       category: "",
-      stock: 0
+      stock: ""
     };
   }
   
   updateInput = e => this.setState({[e.target.name]: e.target.value});
   
-
   addProduct = e => {
 
     e.preventDefault();
-
     const db = firebase.firestore();
-
     db.collection("Productos").add({
       name: this.state.name,
       category: this.state.category,
       stock: this.state.stock
     });
-
     this.setState({
       name: '',
       category: '',
@@ -35,8 +30,6 @@ class AgregarProductos extends Component {
     });
     
   };
-
-  
 
   render() {
     return (
