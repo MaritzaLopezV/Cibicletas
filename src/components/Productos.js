@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { db } from "./services/FirebaseConfig";
+import swal from 'sweetalert';
 class Productos extends Component {
   state = {
     items: []
@@ -18,13 +19,16 @@ class Productos extends Component {
   }
 
   deleteProduct = (id) => {
+    swal("Producto eliminado")
     db.collection("Productos").doc(id).delete();
   }
   pedirProducto = (id) => {
     const timestamp = Date.now(); // This would be the timestamp you want to format
     const hora = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp);
     db.collection("Pedidos").add({id,hora});
+    swal("Producto solicitado");
   }
+
 
   
   render() {
@@ -58,13 +62,6 @@ class Productos extends Component {
                           role="group"
                           aria-label="Basic example"
                         >
-                          <button
-                            type="button"
-                            onClick={() => this.deleteProduct(items.id)}
-                            className="rounded-left btn btn-warning"
-                          >
-                            Editar
-                          </button>
                           <button
                             type="button"
                             onClick={() => this.deleteProduct(items.id)}

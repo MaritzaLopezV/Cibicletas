@@ -6,6 +6,7 @@ import ServicioTecnico from "./ServicioTecnico";
 import Bodega from "./Bodega";
 import Login from "./Login";
 import AgregarProductos from "./AgregarProductos";
+import Reparaciones from "./Reparaciones";
 
 
 
@@ -53,6 +54,11 @@ class Nav extends Component {
                       Bodega
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/Reparaciones"}>
+                      Reparacion
+                    </Link>
+                  </li>
                 </ul>
                 <Login/>
               </div>
@@ -73,6 +79,9 @@ class Nav extends Component {
             </Route>
             <Route path="/AgregarProductos">
               <AgregarProductos />
+            </Route>
+            <Route path="/Reparaciones">
+              <Reparaciones />
             </Route>
           </Switch>
         </Router>

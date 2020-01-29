@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase from 'firebase';
+import swal from 'sweetalert';
 
 class AgregarProductos extends Component {
   
@@ -15,7 +16,7 @@ class AgregarProductos extends Component {
   updateInput = e => this.setState({[e.target.name]: e.target.value});
   
   addProduct = e => {
-
+    swal("Producto agregado")
     e.preventDefault();
     const db = firebase.firestore();
     db.collection("Productos").add({
